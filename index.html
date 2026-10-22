@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>হোমপেজ - BD E-Commerce Stall</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom CSS Link -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <!-- হেডার ও সার্চ বার -->
+    <header class="bg-primary text-white py-3 sticky-top shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="h3 m-0 fw-bold">BD E-Commerce Stall</h1>
+            <div class="w-50">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="যেকোনো প্রোডাক্ট খুঁজুন...">
+                    <button class="btn btn-warning fw-bold" type="button"><i class="fa-solid fa-magnifying-glass"></i> সার্চ</button>
+                </div>
+            </div>
+            <div>
+                <!-- কার্ট বাটন (মোডাল ট্রিগার) -->
+                <button type="button" class="btn btn-outline-light fw-bold" data-bs-toggle="modal" data-bs-target="#cartModal">
+                    <i class="fa-solid fa-cart-shopping me-1"></i> কার্ট (০)
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ব্যানার সেকশন -->
+    <div class="container my-3">
+        <div class="p-5 mb-4 bg-primary text-white rounded shadow-sm position-relative overflow-hidden">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <span class="badge bg-warning text-dark mb-2 fw-bold">মেগা সেল অফার!</span>
+                    <h1 class="display-5 fw-bold">সেরা গ্যাজেট কিনুন ৫০% পর্যন্ত ছাড়</h1>
+                    <p class="col-md-10 fs-6 text-light">স্মার্টওয়াচ, ল্যাপটপ, টিভি এবং ক্যামেরা সহ ৫০টি চমৎকার গ্যাজেটে চলছে বিশেষ মূল্যছাড়।</p>
+                    <a href="#trending-products" class="btn btn-warning btn-lg fw-bold text-dark mt-2 text-decoration-none"><i class="fa-solid fa-bag-shopping me-2"></i>অফারগুলো দেখুন</a>
+                </div>
+                <div class="col-md-4 text-center d-none d-md-block">
+                    <i class="fa-solid fa-cart-shopping fa-6x opacity-50"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- প্রধান কনটেন্ট এরিয়া -->
+    <main class="container my-4">
+        <div class="row">
+            
+            <!-- বামপাশের ক্যাটাগরি সাইডবার -->
+            <aside class="col-md-3 mb-4">
+                <div class="card shadow-sm border-0 sticky-top" style="top: 90px;">
+                    <div class="card-header bg-dark text-white fw-bold">
+                        <i class="fa-solid fa-list me-2"></i> সকল ক্যাটাগরি
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center cursor-pointer">
+                            <span><i class="fa-solid fa-mobile-screen me-2 text-primary"></i> মোবাইল ও ট্যাবলেট</span>
+                            <i class="fa-solid fa-chevron-right text-muted small"></i>
+                        </li>
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center cursor-pointer">
+                            <span><i class="fa-solid fa-laptop me-2 text-primary"></i> কম্পিউটার ও ল্যাপটপ</span>
+                            <i class="fa-solid fa-chevron-right text-muted small"></i>
+                        </li>
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center cursor-pointer">
+                            <span><i class="fa-solid fa-tv me-2 text-primary"></i> টিভি ও হোম অ্যাপ্লায়েন্স</span>
+                            <i class="fa-solid fa-chevron-right text-muted small"></i>
+                        </li>
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center cursor-pointer">
+                            <span><i class="fa-solid fa-camera me-2 text-primary"></i> ক্যামেরা ও সিকিউরিটি</span>
+                            <i class="fa-solid fa-chevron-right text-muted small"></i>
+                        </li>
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center cursor-pointer">
+                            <span><i class="fa-solid fa-headphones me-2 text-primary"></i> গ্যাজেট ও অ্যাক্সেসরিজ</span>
+                            <i class="fa-solid fa-chevron-right text-muted small"></i>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- ডানপাশের প্রোডাক্ট লিস্টিং গ্রিড (৫০টি প্রোডাক্ট) -->
+            <section class="col-md-9">
+                <div id="trending-products" class="d-flex justify-content-between align-items-center mb-3 p-2 bg-white rounded shadow-sm">
+                    <h5 class="m-0 fw-bold text-dark"><i class="fa-solid fa-fire text-danger me-2"></i> ট্রেন্ডিং প্রোডাক্টসমূহ</h5>
+                    <span class="text-muted small">প্রোডাক্ট দেখাচ্ছে (১-৫০)</span>
+                </div>
+
+                <div class="row row-cols-1 row-cols-md-3 g-3">
+                    
+                    <!-- প্রোডাক্ট ১ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">Smart Watch Series 8 Ultra</h6>
+                                <p class="card-text text-muted small mb-2">হাই কোয়ালিটি ডিসপ্লে এবং ওয়াটারপ্রুফ।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ১,৮৫০ <span class="text-decoration-line-through text-muted fs-6">৳ ২,৫০০</span></div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ২ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">Wireless Bluetooth Headphone</h6>
+                                <p class="card-text text-muted small mb-2">ক্রিস্টাল ক্লিয়ার সাউন্ড ও লং ব্যাটারি।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ১,২০০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ৩ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">4K Ultra HD Smart TV 43 Inch</h6>
+                                <p class="card-text text-muted small mb-2">অ্যান্ড্রয়েড সিস্টেম ও ১ বছর ওয়ারেন্টি।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ২৪,৫০০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ৪ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">Pro Smartphone 128GB</h6>
+                                <p class="card-text text-muted small mb-2">হাই স্পিড প্রসেসর ও অসাম ক্যামেরা।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ১৮,৯৯৯</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ৫ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">Slim Ultra Laptop Core i5</h6>
+                                <p class="card-text text-muted small mb-2">৮ জিবি র্যাম ও ২৫৬ জিবি এসএসডি।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ৪৫,০০০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ৬ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">Professional DSLR Camera</h6>
+                                <p class="card-text text-muted small mb-2">২৪ মেগাপিক্সেল ও ১৮-৫৫ মিমি লেন্সে।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ৩৫,৫০০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ৭ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">TWS Wireless Earbuds Pro</h6>
+                                <p class="card-text text-muted small mb-2">নয়েজ ক্যানসেলেশন ও ফাস্ট চার্জিং।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ১,৪৫০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ৮ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">Gaming Bass Headset</h6>
+                                <p class="card-text text-muted small mb-2">RGB লাইট ও ডিপ বেস মেকানিজম।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ২,১০০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ৯ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">Gaming Laptop Core i7</h6>
+                                <p class="card-text text-muted small mb-2">Nvidia RTX গ্রাফিক্স কার্ড অন্তর্ভুক্ত।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ৮৫,০০০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ১০ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1608248597260-65219662b66d?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">20000mAh Fast Power Bank</h6>
+                                <p class="card-text text-muted small mb-2">ডুয়াল পোর্ট ফাস্ট চার্জ সাপোর্ট।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ১,৬৫০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ১১ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">HD Graphics Tablet</h6>
+                                <p class="card-text text-muted small mb-2">ড্রয়িং ও পড়াশোনার জন্য দারুণ।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ১২,৫০০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ১২ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">Bluetooth Speaker Bass</h6>
+                                <p class="card-text text-muted small mb-2">পাওয়ারফুল বেস ও ওয়াটারপ্রুফ বডি।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ২,৪০০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ১৩ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">RGB Mechanical Keyboard</h6>
+                                <p class="card-text text-muted small mb-2">ব্লু সুইচ টাইপিং মেকানিক।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ২,৯০০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ১৪ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">Wireless Gaming Mouse</h6>
+                                <p class="card-text text-muted small mb-2">হাই DPI অ্যাডজাস্টমেন্ট সাপোর্ট।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ৯৫০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ১৫ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">24 Inch Full HD Monitor</h6>
+                                <p class="card-text text-muted small mb-2">IPS প্যানেল ও ৭৫Hz রিফ্রেশ রেট।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ১৪,৫০০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ১৬ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1507646221600-a291e70bc81b?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">WiFi Security IP Camera</h6>
+                                <p class="card-text text-muted small mb-2">৩৬০ ডিগ্রি নাইটিং ভিশন সুবিধা।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ২,৩০০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ১৭ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">Instant Print Camera</h6>
+                                <p class="card-text text-muted small mb-2">সাথে সাথেই ছবি প্রিন্ট করার অপশন।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ৮,৫০০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ১৮ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1543512214-318c7553f230?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">Electric Blender Mixer</h6>
+                                <p class="card-text text-muted small mb-2">স্টেইনলেস স্টিল ব্লেড ও হেভি ডিউটি।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ৩,২০০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ১৯ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1580894732413-a7235a96366f?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">Electric Water Kettle</h6>
+                                <p class="card-text text-muted small mb-2">২ লিটার ধারণক্ষমতা ও অটো কাট-অফ।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ৯৫০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ২০ -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 product-card">
+                            <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&q=80" class="card-img-top p-2 rounded" alt="Product">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark">RGB Gaming Mousepad</h6>
+                                <p class="card-text text-muted small mb-2">ওয়াটারপ্রুফ ও অ্যান্টি-স্লিপ রাবার বেস।</p>
+                                <div class="mt-auto">
+                                    <div class="text-danger fw-bold fs-5 mb-2">৳ ৭৫০</div>
+                                    <a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- অতিরিক্ত প্রোডাক্ট ২১ থেকে ৫০ -->
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Studio Microphone set</h6><p class="card-text text-muted small mb-2">ইউটিউব ও পডকাস্ট রেকর্ডিং এর জন্য সেরা।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ৩,৮০০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Makeup LED Mirror</h6><p class="card-text text-muted small mb-2">টাচ সেন্সর ও ৩ লেভেল লাইটিং।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ১,১০০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">5G Smartphone Pro Max</h6><p class="card-text text-muted small mb-2">২৫৬ জিবি স্টোরেজ ও ওলেড ডিসপ্লে।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ৩৪,৯৯৯</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Fitness Tracker Band</h6><p class="card-text text-muted small mb-2">স্টেপ মনিটর ও স্লিপ ট্র্যাকিং সেন্সর।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ১,১৫০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Wireless Office Mouse</h6><p class="card-text text-muted small mb-2">সাইলেন্ট ক্লিক মেকানিজম।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ৬৫০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Curved Gaming Monitor 27"</h6><p class="card-text text-muted small mb-2">১৪৪Hz রিফ্রেশ রেট ও ১ms রেসপন্স।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ২২,৫০০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Portable Mini Projector</h6><p class="card-text text-muted small mb-2">ফুল এইচডি ১০৮০p সাপোর্ট ও স্পিকার।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ৬,৫০০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Smart Phone Tripod Stand</h6><p class="card-text text-muted small mb-2">ব্লুটুথ রিমোট কন্ট্রোলসহ অ্যাডজাস্টেবল।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ৮৫০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Ring Light 12 Inch</h6><p class="card-text text-muted small mb-2">টিকটক ও ভিডিও করার মোবাইল হোল্ডার।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ১,২৫০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">ANC Neckband Headphone</h6><p class="card-text text-muted small mb-2">২৫ ঘণ্টা প্লেব্যাক টাইম স্পেসিফিকেশন।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ১,৩৫০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Smart Watch Series 7</h6><p class="card-text text-muted small mb-2">অ্যালুমিনিয়াম কেইস ও ডিসপ্লে।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ১,৫৫০০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Studio Over-Ear Headphone</h6><p class="card-text text-muted small mb-2">প্রফেশনাল অডিও মিক্সিং।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ৩,২০০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Budget Phone 64GB</h6><p class="card-text text-muted small mb-2">৫০০০mAh বড় ব্যাটারি ব্যাকআপ।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ১১,৫০০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">NoteBook Air Core i3</h6><p class="card-text text-muted small mb-2">অফিস ও স্টুডেন্ট ব্যবহারের জন্য।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ৩৩,০০০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Action Camera 4K</h6><p class="card-text text-muted small mb-2">ওয়াটারপ্রুফ কেসিং সহ ভ্লগিং ক্যামেরা।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ৪,৮০০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Mini Wireless Airpods</h6><p class="card-text text-muted small mb-2">ফাস্ট কানেক্টিভিটি ফিচার।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ৯৯০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Surround Sound Gaming Headset</h6><p class="card-text text-muted small mb-2">৭.১ চ্যানেল অডিও সুবিধা।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ২,৭৫০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1608248597260-65219662b66d?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">10000mAh Slim Power Bank</h6><p class="card-text text-muted small mb-2">পকেটে সহজে বহনযোগ্য সাইজ।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ৯৫০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Mini Bluetooth Soundbar</h6><p class="card-text text-muted small mb-2">টিভি ও ল্যাপটপের জন্য উপযুক্ত।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ১,৮৫০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Wireless Keyboard and Mouse Combo</h6><p class="card-text text-muted small mb-2">একক ইউএসবি রিসিভার দিয়ে চালিত।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ১,৬৫০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">22 Inch Frameless Monitor</h6><p class="card-text text-muted small mb-2">ফুল এইচডি রেজুলেশন বর্ডারলেস।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ১০,৫০০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1507646221600-a291e70bc81b?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Outdoor Security Camera</h6><p class="card-text text-muted small mb-2">ওয়াটারপ্রুফ মেটাল বডি সুব্যবস্থা।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ৩,২০০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1543512214-318c7553f230?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Multi Juicer Grinder 3 in 1</h6><p class="card-text text-muted small mb-2">৭৫০ ওয়াট মোটর পাওয়ারফুল।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ৪,২০০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1580894732413-a7235a96366f?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Glass Body Electric Kettle</h6><p class="card-text text-muted small mb-2">ব্লু এলইডি লাইট সিস্টেম সহ।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ১,৪৫০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">USB Condenser Mic</h6><p class="card-text text-muted small mb-2">প্লাগ অ্যান্ড প্লে নয়েজ ক্যানসেল।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ১,৮৫০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Dual SIM Android Tablet 10"</h6><p class="card-text text-muted small mb-2">৪ জিবি র্যাম ও ৬৪ জিবি রম।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ৯,৯৯৯</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Smart LED TV 32 Inch</h6><p class="card-text text-muted small mb-2">ইউটিউব ও নেটফ্লিক্স বিল্ডিং করা।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ১৩,৫০০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Gimbal Stabilizer 3-Axis</h6><p class="card-text text-muted small mb-2">মোবাইলে স্মুথ ভিডিও রেকর্ডিং এর জন্য।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ৭,২০০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">RGB Desktop Speaker</h6><p class="card-text text-muted small mb-2">পিসি ও ল্যাপটপের গেমিং স্পিকার।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ১,১৫০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+                    <div class="col"><div class="card h-100 shadow-sm border-0 product-card"><img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&q=80" class="card-img-top p-2 rounded"><div class="card-body d-flex flex-column"><h6 class="card-title fw-bold text-dark">Magnetic Car Phone Holder</h6><p class="card-text text-muted small mb-2">গাড়িতে মোবাইল ব্যবহারের জন্য সেফ।</p><div class="mt-auto"><div class="text-danger fw-bold fs-5 mb-2">৳ ৪৫০</div><a href="product-details.html" class="btn btn-outline-primary w-100 btn-sm"><i class="fa-solid fa-eye me-1"></i> ডিটেইলস দেখুন</a></div></div></div></div>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- কার্ট সামারি ও অর্ডার পপ-আপ মোডাল -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title fw-bold" id="cartModalLabel"><i class="fa-solid fa-cart-shopping me-2"></i>আপনার শপিং কার্ট</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItemsList" class="mb-3">
+                        <!-- জাভাস্ক্রিপ্ট দিয়ে এখানে যুক্ত করা প্রোডাক্টের তালিকা লোড হবে -->
+                    </div>
+                    
+                    <form id="cartCheckoutForm" class="border-top pt-3">
+                        <h6 class="fw-bold mb-3"><i class="fa-solid fa-user me-2"></i>ডেলিভারি তথ্য প্রদান করুন:</h6>
+                        <div class="row g-2">
+                            <div class="col-md-6 mb-2">
+                                <input type="text" class="form-control" placeholder="আপনার নাম *" required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <input type="tel" class="form-control" placeholder="মোবাইল নম্বর *" required>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <textarea class="form-control" rows="2" placeholder="সম্পূর্ণ ডেলিভারি ঠিকানা *" required></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-warning w-100 btn-lg fw-bold mt-3">
+                            <i class="fa-solid fa-check-circle me-1"></i> সব প্রোডাক্ট একসাথে কনফার্ম করুন
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ফুটার সেকশন -->
+    <footer class="bg-dark text-white pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold text-warning mb-3">BD E-Commerce Stall</h5>
+                    <p class="text-secondary small">আমরা দিচ্ছি নির্ভরযোগ্য ও সেরা মানের গ্যাজেট ও ইলেকট্রনিক্স পণ্য। সাশ্রয়ী মূল্যে পণ্য কিনতে আমাদের সাথেই থাকুন।</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white fs-5"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold text-warning mb-3">প্রয়োজনীয় লিঙ্ক</h5>
+                    <ul class="list-unstyled text-secondary small">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-secondary">আমাদের সম্পর্কে (About Us)</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-secondary">গোপনীয়তা নীতি (Privacy Policy)</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-secondary">রিটার্ন ও রিফান্ড পলিসি</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-secondary">শর্তাবলী (Terms & Conditions)</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold text-warning mb-3">যোগাযোগ করুন</h5>
+                    <p class="text-secondary small mb-1"><i class="fa-solid fa-location-dot me-2 text-warning"></i> ঢাকা, বাংলাদেশ</p>
+                    <p class="text-secondary small mb-1"><i class="fa-solid fa-phone me-2 text-warning"></i> +880 1700-000000</p>
+                    <p class="text-secondary small"><i class="fa-solid fa-envelope me-2 text-warning"></i> support@bdecommercestall.com</p>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <div class="text-center text-secondary small pt-2">
+                © ২০২৬ BD E-Commerce Stall। সর্বস্বত্ব সংরক্ষিত।
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
